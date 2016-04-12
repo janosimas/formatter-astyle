@@ -5,7 +5,7 @@
   "description": "Format C/C++/Obj-C using Artistic Style (astyle)",
   "keywords": [
   ],
-  "repository": "https://github.com/atom/formatter-astyle",
+  "repository": "https://github.com/janosimas/formatter-astyle",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
