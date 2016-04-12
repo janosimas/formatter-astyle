@@ -1,17 +1,15 @@
 {
   "name": "formatter-astyle",
   "main": "./lib/main",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Format C/C++/Obj-C using Artistic Style (astyle)",
-  "keywords": [
-  ],
+  "keywords": [],
   "repository": "https://github.com/janosimas/formatter-astyle",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "providedServices": {
     "formatter": {
       "versions": {
