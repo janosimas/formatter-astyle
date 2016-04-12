@@ -1,0 +1,22 @@
+{
+  "name": "formatter-astyle",
+  "main": "./lib/main",
+  "version": "0.1.0",
+  "description": "Format C/C++/Obj-C using Artistic Style (astyle)",
+  "keywords": [
+  ],
+  "repository": "https://github.com/atom/formatter-astyle",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  },
+  "providedServices": {
+    "formatter": {
+      "versions": {
+        "1.0.0": "provideFormatter"
+      }
+    }
+  }
+}
