@@ -1,7 +1,7 @@
 {
   "name": "formatter-astyle",
   "main": "./lib/main",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Format C/C++/Obj-C using Artistic Style (astyle)",
   "keywords": [],
   "repository": "https://github.com/janosimas/formatter-astyle",
