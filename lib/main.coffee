@@ -30,6 +30,7 @@ module.exports =
     return new Promise (resolve, reject) ->
       command = atom.config.get 'formatter-astyle.executablePath'
       args = atom.config.get 'formatter-astyle.arguments'
+      args = args.toString().split " "
       toReturn = []
       process = child_process.spawn(command, args, {})
       process.stdout.on 'data', (data) -> toReturn.push data
