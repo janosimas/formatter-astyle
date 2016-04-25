@@ -1,6 +1,8 @@
 # formatter-astyle
 An Atom Formatter provider built for Artistic Style (astyle).
 
+by default will look for a .astylerc configuration file in the project root folder.
+
 ## Installation
 Before installing anything for Atom, install [Artistic Style](http://astyle.sourceforge.net/).
 

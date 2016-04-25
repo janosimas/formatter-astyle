@@ -27,10 +27,22 @@ module.exports =
 
   format: (text) ->
     child_process = require 'child_process'
+    {File} = require 'atom'
     return new Promise (resolve, reject) ->
       command = atom.config.get 'formatter-astyle.executablePath'
       args = atom.config.get 'formatter-astyle.arguments'
-      args = args.toString().split " "
+      if args.toString().length > 0
+        args = args.toString().split " "
+      else
+        args = []
+
+      projectPaths = atom.project.getPaths()
+      for projectPath in projectPaths
+        confPath = new File(projectPath+'/.astylerc')
+        if confPath.existsSync()
+          args.push('--options='+confPath.getPath())
+
+      console.log args
       toReturn = []
       process = child_process.spawn(command, args, {})
       process.stdout.on 'data', (data) -> toReturn.push data
