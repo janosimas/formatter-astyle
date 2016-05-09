@@ -1,13 +1,12 @@
+addTabOptions = require('./config').TabOptions.properties.addTabOptions
+addBracketModifyOptions = require('./config').BracketModifyOptions.properties.addBracketModifyOptions
+addIndentOptions = require('./config').IndentationOptions.properties.addIndentOptions
+addPaddingOptions = require('./config').PaddingOptions.properties.addPaddingOptions
+addFormattingOptions = require('./config').FormattingOptions.properties.addFormattingOptions
+addObjectiveCOptions = require('./config').ObjectiveCOptions.properties.addObjectiveCOptions
+
 module.exports =
-  config:
-    executablePath:
-      title: 'Path to the exectuable'
-      type: 'string'
-      default: 'astyle'
-    arguments:
-      title: 'Arguments passed to the formatter'
-      type: 'array'
-      default: []
+  config: require './config'
 
   provideFormatter: ->
     [
@@ -26,13 +25,14 @@ module.exports =
     ]
 
   format: (text) ->
+    self = this
     child_process = require 'child_process'
     {File} = require 'atom'
     return new Promise (resolve, reject) ->
-      command = atom.config.get 'formatter-astyle.executablePath'
-      args = atom.config.get 'formatter-astyle.arguments'
-      if args.toString().length > 0
-        args = args.toString().split " "
+      command = atom.config.get 'formatter-astyle.CommmandLineOptions.executablePath'
+      args = atom.config.get('formatter-astyle.CommmandLineOptions.arguments').toString()
+      if args.length > 0
+        args = args.split " "
       else
         args = []
 
@@ -41,6 +41,18 @@ module.exports =
         confPath = new File(projectPath+'/.astylerc')
         if confPath.existsSync()
           args.push('--options='+confPath.getPath())
+
+      addTabOptions args
+
+      addBracketModifyOptions args
+
+      addIndentOptions args
+
+      addPaddingOptions args
+
+      addFormattingOptions args
+
+      addObjectiveCOptions args
 
       console.log args
       toReturn = []
