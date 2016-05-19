@@ -24,3 +24,9 @@ module.exports =
     type: 'array'
     default: []
     order: 3
+
+addCommandLineOptions: (args) ->
+  clOptions = atom.config.get('formatter-astyle.CommmandLineOptions.clOptions').toString()
+  if clOptions
+    args.push('--options='+clOptions)
+  

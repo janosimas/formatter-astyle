@@ -1,3 +1,4 @@
+addCommandLineOptions = require('./config').CommmandLineOptions.properties.addCommandLineOptions
 addTabOptions = require('./config').TabOptions.properties.addTabOptions
 addBracketModifyOptions = require('./config').BracketModifyOptions.properties.addBracketModifyOptions
 addIndentOptions = require('./config').IndentationOptions.properties.addIndentOptions
@@ -36,11 +37,7 @@ module.exports =
       else
         args = []
 
-      projectPaths = atom.project.getPaths()
-      for projectPath in projectPaths
-        confPath = new File(projectPath+'/.astylerc')
-        if confPath.existsSync()
-          args.push('--options='+confPath.getPath())
+      # addCommandLineOptions args
 
       addTabOptions args
 
@@ -53,6 +50,13 @@ module.exports =
       addFormattingOptions args
 
       addObjectiveCOptions args
+
+      if args.length == 0
+        projectPaths = atom.project.getPaths()
+        for projectPath in projectPaths
+          confPath = new File(projectPath+'/.astylerc')
+          if confPath.existsSync()
+            args.push('--options='+confPath.getPath())
 
       console.log args
       toReturn = []
