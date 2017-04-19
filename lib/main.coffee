@@ -59,10 +59,10 @@ module.exports =
             args.push('--options='+confPath.getPath())
 
       console.log args
-      toReturn = []
+      toReturn = ''
       process = child_process.spawn(command, args, {})
-      process.stdout.on 'data', (data) -> toReturn.push data
+      process.stdout.on 'data', (data) -> toReturn += data
       process.stdin.write text
       process.stdin.end()
       process.on 'close', ->
-        resolve(toReturn.join('\n'))
+        resolve(toReturn)
