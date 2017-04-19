@@ -5,6 +5,7 @@ addIndentOptions = require('./config').IndentationOptions.properties.addIndentOp
 addPaddingOptions = require('./config').PaddingOptions.properties.addPaddingOptions
 addFormattingOptions = require('./config').FormattingOptions.properties.addFormattingOptions
 addObjectiveCOptions = require('./config').ObjectiveCOptions.properties.addObjectiveCOptions
+readline = require('readline');
 
 module.exports =
   config: require './config'
@@ -59,10 +60,14 @@ module.exports =
             args.push('--options='+confPath.getPath())
 
       console.log args
-      toReturn = ''
+      toReturn = []
       process = child_process.spawn(command, args, {})
-      process.stdout.on 'data', (data) -> toReturn += data
+      rl = readline.createInterface({
+         input: process.stdout,
+         terminal: false
+      });
+      rl.on 'line', (line) -> toReturn.push line
       process.stdin.write text
       process.stdin.end()
       process.on 'close', ->
-        resolve(toReturn)
+        resolve(toReturn.join('\n'))
