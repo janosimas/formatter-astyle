@@ -10,7 +10,7 @@ If any configuration is set the default load of the file is disabled and a file 
 Before installing anything for Atom, install [Artistic Style](http://astyle.sourceforge.net/).
 
 ### Important to Windows users
-In Windows, you should make sure that `astyle.exe` is visible to `formatter-astyle`.
+In Windows, you should make sure that `astyle.exe` is visible to `formatter-astyle`, so that `formatter-astyle` can execute `astyle.exe` to actually format the code.
 
 You have two ways to do that.
 1. The first way: Set the path of `astyle` you downloaded in the Settings page of `formatter-astyle` in Atom.
