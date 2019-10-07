@@ -1,3 +1,7 @@
+# THIS EXTENSION IS NOT IN ACTIVE DEVELOPMENT
+I'm not mantaining this extension anymore, please feel free to fork if you think it's still useful.
+
+
 # formatter-astyle
 An Atom Formatter provider built for Artistic Style (astyle).
 
